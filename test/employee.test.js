@@ -1,5 +1,3 @@
-const { exportAllDeclaration } = require('@babel/types');
-const { default: test } = require('node:test');
 const Employee = require('../lib/Employee');
 const employee = new Employee('Michael', '58078', 'potter0316@gmail.com');
 
@@ -14,13 +12,13 @@ test('should return the name from the getName()', () => {
 });
 
 test('should return the id from the getId()', () => {
-    expect(employee.getId()).toBe("58078");
-})
+    expect(employee.getId()).toBe('58078');
+});
 
 test('should return the email from the getEmail()', () => {
-    expect(employee.getEmail()).toBe("58078");
-})
+    expect(employee.getEmail()).toBe('potter0316@gmail.com');
+});
 
 test('should return the role from the getRole()', () => {
-    expect(employee.getRole()).toBe("Employee");
-})
+    expect(employee.getRole()).toBe('employee');
+});
