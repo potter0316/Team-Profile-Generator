@@ -21,5 +21,5 @@ test('should return the email from the getEmail', () => {
 });
 
 test('should return the officeNumber from the getofficeNumber', () => {
-    expect(intern.getOfficeNumber()).toBe('1632');
+    expect(intern.getSchool()).toBe('Minnesota');
 });
