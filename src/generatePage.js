@@ -1,4 +1,4 @@
-generateManager = (manager) => {mbers
+const generateManager = function (manager) {
     return `
     <div>
         <div>
@@ -17,7 +17,7 @@ generateManager = (manager) => {mbers
 }
 
 // Engineer card
-generateEngineer = (Engineer) => {
+ const generateEngineer = function (Engineer) {
     return `
     <div>
         <div>
@@ -36,7 +36,7 @@ generateEngineer = (Engineer) => {
 };
 
 // intern card
-generateIntern = (intern) => {
+const generateIntern = function (intern) {
     return `
     <div>
         <div>
@@ -92,8 +92,45 @@ generateHTML = (data) => {
  }
  
  // generate html page 
- generatePage = (employeeCards) => {   
-   return``
+const generateHTML = function (employeeCards) {
+    return `
+    <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Profile Generator</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav class="navbar" id="navbar">
+        <span class="navbar-brand mb-0 h1 w-100 text-center" id="navbar-text"
+          >Team Profile</span
+        >
+      </nav>
+    </header>
 
+    <main>
+      <div class="container">
+        <div class="row" id="team-cards"></div>
+        ${employeeCards}
+      </div>
+    </main>
+  </body>
+</html>
+    `
 }
-        
+
+
+module.exports = generatePage;

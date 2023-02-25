@@ -6,7 +6,7 @@ const Intern = require('./lib/intern');
 //connecting installed npm
 const inquirer = require('inquirer');
 const fs = require("fs");
-const generatePage = require('./src/generate-profile.js');
+const generatePage = require('./src/generatePage.js');
 const teamMembers = [];
 
 //node prompts
@@ -91,11 +91,11 @@ const addEmployee = () => {
 
             teamMembers.push(employee);
 
-            if (confirmAddEmployee) {
-                return addEmployee(teamMembers);
-            } else {
-                return teamMembers;
-            }
+            // if (confirmAddEmployee) {
+            //     return addEmployee(teamMembers);
+            // } else {
+            //     return teamMembers;
+            // }
         })
 
 };
@@ -111,3 +111,15 @@ const writeFile = data => {
         }
     })
 };
+
+promptUser()
+    .then(addEmployee)
+    .then(teamMembers => {
+        return generatePage(teamMembers);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML);
+    })
+    .catch(err => {
+        console.log(err);
+    });
