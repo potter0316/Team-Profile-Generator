@@ -6,7 +6,7 @@ const Intern = require('./lib/intern');
 //connecting installed npm
 const inquirer = require('inquirer');
 const fs = require("fs");
-const generatePage = require('./src/generate-html.js');
+const generatePage = require('./src/generatePage.js');
 const teamMembers = [];
 
 //node prompts
@@ -32,16 +32,17 @@ const promptUser = () => {
             name: 'officenumber',
             message: "Please enter the manager's office number.",
         },
-        {
-            type: 'confirm',
-            name: 'addEmployee',
-            message: 'Would you like to add an additional team member?',
-        }
     ])
+        .then(managerInput => {
+            const { name, id, email, officeNumber } = managerInput;
+            const manager = new Manager(name, id, email, officeNumber);
+                teamMembers.push(manager);
+            console.log(manager);
+    })
 };
 
 const addEmployee = () => {
-    return inquirer.prompt ([
+    return inquirer.prompt([
         {
             type: 'list',
             name: 'role',
@@ -63,7 +64,7 @@ const addEmployee = () => {
             name: 'email',
             message: "What is your employee's email?",
         },
-        { 
+        {
             type: 'input',
             name: 'github',
             message: "please enter your employee's github username",
@@ -73,32 +74,52 @@ const addEmployee = () => {
             name: 'school',
             message: 'What school was the intern a part of?',
         },
-        .then(teamData => {
-            // data for employee types 
-            if (teamData.role === "Engineer") {
-                const  { name, id, email, github } = teamData; 
-                const engineer = new Engineer (name, id, email, github);
+    ])
+        .then(employeeData => {
+            // data for employee types
+            let { name, id, email, role, github, school, } = employeeData;
+            let employee;
+
+            if (role === "Engineer") {
+                employee = new Engineer(name, id, email, github);
+                console.log(employee);
     
-                teamMembers.push(engineer); 
-                console.log(engineer);
-    
-            } else {
-                const  { name, id, email, school } = teamData; 
-                const intern = new Intern (name, id, email, school);
-    
-                teamMembers.push(intern);
-                console.log(intern);
-    
-        }
-            if (teamData.confirmAddEmployee) {
-                return addEmployee(teamMembers); 
-            } else {
-                return teamMembers; 
+            } else if (role === "Intern") {
+                employee = new Engineer(name, id, email, github);
+                console.log(employee);
             }
+
+            teamMembers.push(employee);
+
+            // if (confirmAddEmployee) {
+            //     return addEmployee(teamMembers);
+            // } else {
+            //     return teamMembers;
+            // }
         })
-    
-      
-])
-}
+
+};
+
+//code to generate page
+const writeFile = data => {
+    fs.writeFile('./dist/index.html', data, err => {
+        if (err) {
+            console.log(err);
+            return;
+        } else {
+            console.log("Success!")
+        }
+    })
+};
 
 promptUser()
+    .then(addEmployee)
+    .then(teamMembers => {
+        return generatePage(teamMembers);
+    })
+    .then(pageHTML => {
+        return writeFile(pageHTML);
+    })
+    .catch(err => {
+        console.log(err);
+    });
