@@ -55,6 +55,45 @@ generateIntern = (intern) => {
 };
 
 generateHTML = (data) => {
-    
+     // array for cards 
+     teamArray = []; 
+
+     for (let i = 0; i < data.length; i++) {
+         const employee = data[i];
+         const role = employee.getRole(); 
+ 
+         if (role === 'Manager') {
+             const managerCard = generateManager(employee);
+ 
+             teamArray.push(managerCard);
+         }
+ 
+         if (role === 'Engineer') {
+             const engineerCard = generateEngineer(employee);
+ 
+             teamArray.push(engineerCard);
+         }
+ 
+         if (role === 'Intern') {
+             const internCard = generateIntern(employee);
+ 
+             teamArray.push(internCard);
+         }
+ 
+     }
+ 
+     const employeeCards = teamArray.join('')
+ 
+     // return to generated page
+     generateTeam = generateHTML(employeeCards); 
+     return employeeCards;
+ 
+ 
+ }
+ 
+ // generate html page 
+ generatePage = (employeeCards) => {   
+   return``
+
 }
         
