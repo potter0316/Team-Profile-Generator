@@ -7,10 +7,6 @@
   --secondary: white;
 }
 
-body {
-  font-family: Georgia, "Times New Roman", Times, serif;
-}
-
 #navbar {
   background-color: var(--primary);
   color: var(--secondary);
@@ -20,3 +16,31 @@ body {
 .navbar-brand {
   font-size: 50px;
 }
+
+body {
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+main{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 20px;
+    padding: 15px;
+}
+
+.card {
+    padding: 20px;
+    margin: 20px;
+}
+
+.card-header {
+    color: var(--secondary);
+    background-color: blue;
+}
+
+.list-group {
+    color: black;
+}
+
+
+
