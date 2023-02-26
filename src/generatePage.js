@@ -32,14 +32,15 @@ const generateManager = function (manager) {
             <li class="list-group">Email:<ahref="mailto:${engineer.email}">${engineer.email}</a></li>
             <li class="list-group">Github:<ahref="https://github.com/${engineer.github}"</a>${engineer.github}</li>
             </ul>
-            </div>
+        </div>
+      </div>
             `
 };
 
 // intern card
 const generateIntern = function (intern) {
     return `
-    <div>
+    <div class="card" style="width: 18rem;">
         <div class="card-header">
             <p>Intern</p>
         </div>
@@ -49,9 +50,9 @@ const generateIntern = function (intern) {
             <ul class="list-group">
             <li class="list-group">ID: ${intern.id}</li>
             <li class="list-group">Email:<ahref="mailto:${intern.email}">${intern.email}</a?></li>
-            <li class="list-group">Github:<ahref="https://github.com/${intern.github}"</a></li>
             </ul>
             </div>
+          </div>
             `
 };
 
@@ -123,11 +124,7 @@ const generateHTML = function (employeeCards) {
     </header>
 
     <main>
-      <header>
-      <h1> Team Profile </h1>
-      </header>
-        ${employeeCards}
-      </div>
+           ${employeeCards}
     </main>
   </body>
 </html>
