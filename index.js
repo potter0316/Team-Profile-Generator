@@ -53,7 +53,7 @@ const promptUser = () => {
         },
         {
             type: 'input',
-            name: 'officenumber',
+            name: 'officeNumber',
             message: "Please enter the manager's office number.",
             validate: nameInput => {
                 if  (isNaN(nameInput)) {

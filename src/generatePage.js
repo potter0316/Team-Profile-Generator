@@ -1,17 +1,17 @@
 const generateManager = function (manager) {
     return `
-    <div>
-        <div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
             <p>Manager</p>
         </div>
 
         <div>
-            <h5>${manager.name}</h5>
-            <p>
-            <p class="id">ID:${manager.id}</p>
-            <p class="email">Email:<ahref="mailto:${manager.email}">${manager.email}</a></p>
-            <p class="officeNumber">Office Number: ${manager.officeNumber}</p>
-            </p>
+            <h4>${manager.name}</h4>
+            <ul class="list-group">
+            <li class="list-group">ID:${manager.id}</li>
+            <li class="list-group">Email:<ahref="mailto:${manager.email}">${manager.email}</a></li>
+            <li class="list-group">Office Number: ${manager.officeNumber}</li>
+            </ul>
         </div>
     </div>
     `
@@ -20,18 +20,18 @@ const generateManager = function (manager) {
 // Engineer card
  const generateEngineer = function (engineer) {
     return `
-    <div>
-        <div>
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
             <p>Engineer</p>
         </div>
         
         <div>
             <h5>${engineer.name}</h5>
-            <p>
-            <p>ID: ${engineer.id}</p>
-            <p class="email>Email:<ahref="mailto:${engineer.email}">${engineer.email}</a?></p>
-            <p class="github">Github:<ahref="https://github.com/${engineer.github}"</a></p>
-            </p>
+            <ul class="list-group">
+            <li class="list-group">ID: ${engineer.id}</li>
+            <li class="list-group">Email:<ahref="mailto:${engineer.email}">${engineer.email}</a></li>
+            <li class="list-group">Github:<ahref="https://github.com/${engineer.github}"</a>${engineer.github}</li>
+            </ul>
             </div>
             `
 };
@@ -40,17 +40,17 @@ const generateManager = function (manager) {
 const generateIntern = function (intern) {
     return `
     <div>
-        <div>
+        <div class="card-header">
             <p>Intern</p>
         </div>
         
         <div>
             <h5>${intern.name}</h5>
-            <p>
-            <p>ID: ${intern.id}</p>
-            <p class="email>Email:<ahref="mailto:${intern.email}">${intern.email}</a?></p>
-            <p class="github">Github:<ahref="https://github.com/${intern.github}"</a></p>
-            </p>
+            <ul class="list-group">
+            <li class="list-group">ID: ${intern.id}</li>
+            <li class="list-group">Email:<ahref="mailto:${intern.email}">${intern.email}</a?></li>
+            <li class="list-group">Github:<ahref="https://github.com/${intern.github}"</a></li>
+            </ul>
             </div>
             `
 };
@@ -86,8 +86,8 @@ generatePage = (data) => {
      const employeeCards = teamArray.join('')
  
      // return to generated page
-     generateTeam = generateHTML(employeeCards); 
-     return employeeCards;
+     const generateTeam = generateHTML(employeeCards); 
+     return generateTeam;
  
  
  }
@@ -123,8 +123,9 @@ const generateHTML = function (employeeCards) {
     </header>
 
     <main>
-      <div class="container">
-        <div class="row" id="team-cards"></div>
+      <header>
+      <h1> Team Profile </h1>
+      </header>
         ${employeeCards}
       </div>
     </main>
