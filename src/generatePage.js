@@ -10,6 +10,7 @@ const generateManager = function (manager) {
             <p>
             <p class="id">ID:${manager.id}</p>
             <p class="email">Email:<ahref="mailto:${manager.email}">${manager.email}</a></p>
+            <p class="officeNumber">Office Number: ${manager.officeNumber}</p>
             </p>
         </div>
     </div>
@@ -17,7 +18,7 @@ const generateManager = function (manager) {
 }
 
 // Engineer card
- const generateEngineer = function (Engineer) {
+ const generateEngineer = function (engineer) {
     return `
     <div>
         <div>
@@ -25,10 +26,10 @@ const generateManager = function (manager) {
         </div>
         
         <div>
-            <h5>${Engineer.name}</h5>
+            <h5>${engineer.name}</h5>
             <p>
-            <p>ID: ${Engineer.id}</p>
-            <p class="email>Email:<ahref="mailto:${Engineer.email}">${engineer.email}</a?></p>
+            <p>ID: ${engineer.id}</p>
+            <p class="email>Email:<ahref="mailto:${engineer.email}">${engineer.email}</a?></p>
             <p class="github">Github:<ahref="https://github.com/${engineer.github}"</a></p>
             </p>
             </div>
@@ -54,7 +55,7 @@ const generateIntern = function (intern) {
             `
 };
 
-generateHTML = (data) => {
+generatePage = (data) => {
      // array for cards 
      teamArray = []; 
 
@@ -129,7 +130,7 @@ const generateHTML = function (employeeCards) {
     </main>
   </body>
 </html>
-    `
+    `;
 }
 
 
