@@ -15,6 +15,7 @@ The project is a Team Profile Generator. Using node and npm, the user creates th
 ## Installation
 To take full advantage of the project node and npm are required to be installed. Jest was also used to test.
 ## Usage
+![professional README](./Assets/Team%20Profile.png).png)
 The user will answer all of the questions to create a Team Profile!
 ## License
 MIT
